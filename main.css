@@ -1,0 +1,782 @@
+/* ============================================
+   AYYA GSM DOMAIN (AGD TECH) - STYLESHEET
+   Mobile Repair Website
+   
+   HOW TO USE THIS FILE:
+   1. All colors are defined in :root section
+   2. To change site colors, edit the :root values
+   3. Each section is clearly labeled
+   4. Don't delete any section unless you know what you're doing
+   
+   MAINTENANCE TIPS:
+   - Want to change primary color? Edit --primary
+   - Want bigger text? Edit --font-size-* values
+   - Want more spacing? Edit --space-* values
+   ============================================ */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   CSS VARIABLES
+   
+   EDIT THESE TO CUSTOMIZE YOUR SITE:
+   - Change colors by editing hex codes
+   - Adjust spacing by changing rem values
+   - Modify font sizes for different text sizes
+   
+   EXAMPLE:
+   --primary: #2563eb; (change to #ff0000 for red)
+   ============================================ */
+:root {
+    /* BRAND COLORS - Edit these to match your brand */
+    --primary: #2563eb;              /* Main blue color */
+    --primary-hover: #1d4ed8;        /* Darker blue for hover */
+    --whatsapp: #25D366;             /* WhatsApp green (don't change) */
+    --whatsapp-hover: #20BA5A;       /* Darker WhatsApp green */
+    --success: #10b981;              /* Success green */
+    --warning: #f59e0b;              /* Warning orange */
+    
+    /* NEUTRAL COLORS - Background and text */
+    --dark: #1f2937;                 /* Dark text color */
+    --gray: #6b7280;                 /* Gray text color */
+    --light-gray: #f8fafc;           /* Light background */
+    --border: #e5e7eb;               /* Border color */
+    
+    /* SPACING SYSTEM - Control gaps and padding */
+    --space-xs: 0.5rem;              /* Extra small (8px) */
+    --space-sm: 1rem;                /* Small (16px) */
+    --space-md: 1.5rem;              /* Medium (24px) */
+    --space-lg: 2rem;                /* Large (32px) */
+    --space-xl: 3rem;                /* Extra large (48px) */
+    
+    /* TYPOGRAPHY - Text sizes */
+    --font-size-sm: 0.85rem;         /* Small text */
+    --font-size-base: 1rem;          /* Normal text (16px) */
+    --font-size-lg: 1.1rem;          /* Large text */
+    --font-size-xl: 1.5rem;          /* Extra large */
+    --font-size-2xl: 1.8rem;         /* Headings */
+    
+    /* ANIMATION SPEEDS */
+    --transition-fast: 0.15s;        /* Fast animations */
+    --transition-base: 0.3s;         /* Normal animations */
+}
+
+/* ============================================
+   BASE STYLES
+   Applied to all elements
+   DON'T EDIT unless you know CSS well
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;          /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    overflow-x: hidden;               /* Prevent horizontal scroll */
+}
+
+/* ============================================
+   CONTAINER
+   Centers content and adds padding
+   Used throughout the site
+   ============================================ */
+.container {
+    max-width: 1000px;                /* Maximum width */
+    margin: 0 auto;                   /* Center the container */
+    padding: 0 var(--space-sm);       /* Side padding */
+}
+
+/* ============================================
+   HEADER
+   Sticky navigation at top
+   Contains logo and contact buttons
+   ============================================ */
+header {
+    position: sticky;                 /* Stays at top when scrolling */
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);      /* Blur effect behind header */
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-sm) 0;
+    z-index: 1000;                    /* Always on top */
+    transition: box-shadow var(--transition-base);
+}
+
+/* Header shadow when scrolled */
+header.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;   /* Logo left, buttons right */
+    align-items: center;
+}
+
+.logo {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--primary);
+    user-select: none;                /* Can't select/copy text */
+}
+
+.header-cta {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+/* ============================================
+   BUTTON SYSTEM
+   Reusable button styles
+   
+   USAGE:
+   <button class="btn btn-primary">Click Me</button>
+   <button class="btn btn-secondary">Or This</button>
+   
+   TO ADD NEW BUTTON TYPE:
+   .btn-yourname {
+       background: #yourcolor;
+       color: white;
+   }
+   ============================================ */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Click effect */
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* WhatsApp button (green) */
+.btn-primary {
+    background: var(--whatsapp);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--whatsapp-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+}
+
+/* Call button (blue) */
+.btn-secondary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Disabled button state */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   HERO SECTION
+   Main landing area with headline
+   ============================================ */
+.hero {
+    padding: var(--space-xl) 0 var(--space-lg);
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);  /* Responsive font size */
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+
+.hero-tagline {
+    font-size: var(--font-size-lg);
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+}
+
+.hero p {
+    font-size: var(--font-size-base);
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+}
+
+/* ============================================
+   TRUST BADGES
+   Shows social proof (5000+ devices, etc.)
+   ============================================ */
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
+}
+
+.badge {
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Staggered animation for each badge */
+.badge:nth-child(1) { 
+    animation-delay: 0.1s; 
+    opacity: 0; 
+    animation-fill-mode: forwards; 
+}
+.badge:nth-child(2) { 
+    animation-delay: 0.2s; 
+    opacity: 0; 
+    animation-fill-mode: forwards; 
+}
+.badge:nth-child(3) { 
+    animation-delay: 0.3s; 
+    opacity: 0; 
+    animation-fill-mode: forwards; 
+}
+
+.badge-number {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.badge-label {
+    font-size: var(--font-size-sm);
+    color: var(--gray);
+}
+
+/* ============================================
+   SERVICES SECTION
+   Displays repair services grid
+   ============================================ */
+.services {
+    padding: var(--space-xl) 0;
+    background: var(--light-gray);
+}
+
+.section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--space-xs);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: var(--space-lg);
+}
+
+/* Service cards grid (responsive) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+/* Individual service card */
+.service-card {
+    background: white;
+    padding: var(--space-md);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all var(--transition-base);
+    opacity: 0;                       /* Hidden initially */
+    transform: translateY(20px);
+}
+
+/* Visible state (added by JavaScript on scroll) */
+.service-card.visible {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Hover effect */
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.service-card h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-xs);
+}
+
+.service-price {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: var(--space-xs) 0;
+}
+
+.service-desc {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: var(--space-sm);
+}
+
+.service-time {
+    font-size: var(--font-size-sm);
+    color: var(--success);
+    font-weight: 500;
+}
+
+/* ============================================
+   ORDER FORM SECTION
+   Customer quote request form
+   ============================================ */
+.order-section {
+    padding: var(--space-xl) 0;
+}
+
+.order-card {
+    background: var(--light-gray);
+    padding: var(--space-lg);
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Form groups (label + input) */
+.form-group {
+    margin-bottom: var(--space-md);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+    font-size: 0.9rem;
+}
+
+.required {
+    color: #ef4444;                   /* Red asterisk for required fields */
+}
+
+/* Form inputs (text, select, textarea) */
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-family: inherit;
+    transition: all var(--transition-base);
+    background: white;
+}
+
+/* Input focus state */
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Select dropdown (custom arrow) */
+select.form-input {
+    cursor: pointer;
+    appearance: none;                  /* Remove default arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+}
+
+/* Textarea */
+textarea.form-input {
+    resize: vertical;                  /* Only vertical resize */
+    min-height: 80px;
+}
+
+/* ============================================
+   ORDER SUMMARY
+   Shows after form submission
+   Displays order details and payment info
+   ============================================ */
+.order-summary {
+    background: white;
+    padding: var(--space-md);
+    border-radius: 12px;
+    margin-top: var(--space-md);
+    display: none;                     /* Hidden by default */
+    animation: slideDown 0.4s ease-out;
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Show state (added by JavaScript) */
+.order-summary.show {
+    display: block;
+}
+
+/* Summary rows */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+    font-weight: 600;
+    font-size: var(--font-size-lg);
+}
+
+/* ============================================
+   ORDER CODE
+   Unique tracking code display
+   ============================================ */
+.order-code {
+    background: #fef3c7;               /* Light yellow */
+    border: 2px dashed var(--warning);
+    padding: var(--space-sm);
+    border-radius: 8px;
+    text-align: center;
+    margin: var(--space-md) 0;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Pulse animation (draws attention) */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.order-code-label {
+    font-size: var(--font-size-sm);
+    color: #92400e;
+}
+
+.order-code-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #92400e;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
+}
+
+/* Copy button */
+.copy-btn {
+    background: var(--warning);
+    color: #92400e;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all var(--transition-fast);
+}
+
+.copy-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   PAYMENT METHODS
+   Shows payment options (OPay, Bank, Cash)
+   ============================================ */
+.payment-details {
+    background: white;
+    padding: var(--space-md);
+    border-radius: 8px;
+    margin-top: var(--space-sm);
+}
+
+.payment-method {
+    background: var(--light-gray);
+    padding: var(--space-sm);
+    border-radius: 8px;
+    margin-bottom: var(--space-sm);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.payment-method:hover {
+    border-color: var(--primary);
+    transform: translateX(4px);        /* Slide right on hover */
+}
+
+/* Selected state */
+.payment-method.selected {
+    border-color: var(--primary);
+    background: #eff6ff;               /* Light blue */
+}
+
+/* Checkmark for selected payment */
+.payment-method.selected::after {
+    content: '✓';
+    position: absolute;
+    right: var(--space-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.payment-method-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.payment-icon {
+    font-size: 1.5rem;
+}
+
+.payment-info {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.payment-name {
+    font-size: var(--font-size-sm);
+    color: var(--gray);
+}
+
+/* ============================================
+   LOCATION SECTION
+   Shows shop location and contact info
+   ============================================ */
+.location-section {
+    padding: var(--space-xl) 0;
+    background: var(--light-gray);
+}
+
+/* Map container (links to Google Maps) */
+.map-container {
+    margin-top: var(--space-lg);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    height: 350px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    color: var(--gray);
+}
+
+.map-container:hover {
+    border-color: var(--primary);
+    transform: scale(1.01);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Location details grid */
+.location-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.location-card {
+    background: white;
+    padding: var(--space-md);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all var(--transition-base);
+}
+
+.location-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   FOOTER
+   Bottom section with info and links
+   ============================================ */
+footer {
+    background: var(--dark);
+    color: white;
+    padding: var(--space-lg) 0 var(--space-sm);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.footer-section h4 {
+    margin-bottom: var(--space-sm);
+}
+
+.footer-section p {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid #374151;
+    color: #9ca3af;
+    font-size: var(--font-size-sm);
+}
+
+/* ============================================
+   LOADING SPINNER
+   Shows when processing form
+   ============================================ */
+.loading {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   TOAST NOTIFICATION
+   Pop-up messages (success, error, etc.)
+   ============================================ */
+.toast {
+    position: fixed;
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+    background: var(--dark);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(120%);       /* Hidden below screen */
+    transition: transform var(--transition-base);
+    z-index: 2000;
+    max-width: 300px;
+}
+
+/* Show state */
+.toast.show {
+    transform: translateY(0);
+}
+
+/* Success toast (green) */
+.toast.success {
+    background: var(--success);
+}
+
+/* Error toast (red) */
+.toast.error {
+    background: #ef4444;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   Adjustments for small screens
+   ============================================ */
+@media (max-width: 768px) {
+    /* Smaller spacing on mobile */
+    :root {
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+    }
+
+    /* Stack header buttons vertically */
+    .header-cta {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    /* Full width buttons */
+    .btn {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    /* Single column services */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Full width toast */
+    .toast {
+        left: var(--space-sm);
+        right: var(--space-sm);
+    }
+}
+
+/* ============================================
+   END OF STYLESHEET
+   
+   TIPS FOR NEW DEVELOPERS:
+   1. Always edit colors in :root section first
+   2. Use browser DevTools to test changes
+   3. Test on mobile after making changes
+   4. Keep backup before major edits
+   5. Ask for help if stuck!
+   ============================================ */
